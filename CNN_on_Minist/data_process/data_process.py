@@ -23,28 +23,3 @@ class MyDataset(Dataset):
 
     def __len__(self):
         return self.X_len
-
-
-if __name__ == '__main__':
-    train_X_path = 'E:/PyCharmWorkSpace/dataset/Minist/train-images.idx3-ubyte'
-    train_Y_path = 'E:\\PyCharmWorkSpace\\dataset\\Minist\\train-labels.idx1-ubyte'
-
-    # train_X = idx2numpy.convert_from_file(train_X_path)
-    # train_Y = idx2numpy.convert_from_file(train_Y_path)
-
-    # print(type(train_X))
-    # print(train_X.shape)
-    # print(type(train_Y))
-    # print(train_Y.shape)
-    # print(set(train_Y.tolist()))  # {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-
-    # plt.figimage(train_X[0])
-    # plt.show()
-
-    dataset = MyDataset(X_path=train_X_path, Y_path=train_Y_path)
-    print(type(dataset.X))
-
-    a = torch.Tensor([1, 2, 2])
-    b = torch.Tensor([1, 2, 3])
-
-    print(torch.sum(torch.equal(a, b)))
