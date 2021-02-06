@@ -23,10 +23,10 @@ from module.loss import Myloss
 setup_seed(30)  # 设置随机种子
 
 # 定义数据集文件路径
-train_X_path = 'E:\\PyCharmWorkSpace\\dataset\\Minist\\train-images.idx3-ubyte'
-train_Y_path = 'E:\\PyCharmWorkSpace\\dataset\\Minist\\train-labels.idx1-ubyte'
-test_X_path = 'E:\\PyCharmWorkSpace\\dataset\\Minist\\t10k-images.idx3-ubyte'
-test_Y_path = 'E:\\PyCharmWorkSpace\\dataset\\Minist\\t10k-labels.idx1-ubyte'
+train_X_path = '数据集路径\\Minist\\train-images.idx3-ubyte'
+train_Y_path = '数据集路径\\Minist\\train-labels.idx1-ubyte'
+test_X_path = '数据集路径\\Minist\\t10k-images.idx3-ubyte'
+test_Y_path = '数据集路径\\Minist\\t10k-labels.idx1-ubyte'
 
 # 保存结果图像的根目录
 result_figure_path = 'result_figure'
