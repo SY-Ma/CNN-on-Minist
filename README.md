@@ -4,11 +4,11 @@
 ## 测试结果
 网络|准确率|
 ----|-----|
-Basic CNN||
+Basic CNN|99.19|
 Inception CNN||
 Residual CNN||
 FCN||
-ResNet||
+ResNet|99.62|
 
 ## 各模型简介
 - **Basic CNN**：使用基础的卷积模型架构，使用卷积层、最大池化层、ReLu激活层等对模型进行训练
