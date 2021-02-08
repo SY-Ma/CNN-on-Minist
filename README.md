@@ -81,7 +81,18 @@ run.py|训练模型|
 run_with_saved_model.py|使用训练好的模型（保存为pkl文件）测试结果|
 
 ## CAM结果分析
-
+CAM旨在观察CNN模型在进行分类时更加关注图片的哪部分特征。得到的结果并非一开始认为的，会更加关注图片的表述数字的部分。如下图中的黄颜色的部分。<br>
+<img src="https://github.com/SY-Ma/CNN-on-Minist/blob/main/CAM%20result%20figure/x2%201.jpg" width="100" height="100" align="bottom" /> 
+<img src="https://github.com/SY-Ma/CNN-on-Minist/blob/main/CNN_on_Minist/CAM_result_figure/1.png" width="100" height="100" align="bottom" /> 
+<img src="https://github.com/SY-Ma/CNN-on-Minist/blob/main/CNN_on_Minist/CAM_result_figure/3.png" width="100" height="100" align="bottom" /> 
+<img src="https://github.com/SY-Ma/CNN-on-Minist/blob/main/CNN_on_Minist/CAM_result_figure/7.png" width="100" height="100" align="bottom" /> 
+<img src="https://github.com/SY-Ma/CNN-on-Minist/blob/main/CAM%20result%20figure/4.png" width="100" height="100" align="bottom" /> <br>
+然而，模型似乎更加关注图片中数字的轮廓，即颜色快速变化的陡坡，相当于灰度值迅速变化的边界。使用FCN模型在数据集上的CAM绘制结果如下图所示,其对应数字分别为1，2，3，7，9。<br>
+<img src="https://github.com/SY-Ma/CNN-on-Minist/blob/main/CAM%20result%20figure/number%3D1%202021-02-04%2020-30-48.jpg" width="100" height="100" align="bottom" />
+<img src="https://github.com/SY-Ma/CNN-on-Minist/blob/main/CNN_on_Minist/CAM_result_figure/number%3D1%202021-02-08%2019-45-11.jpg" width="100" height="100" align="bottom" />
+<img src="https://github.com/SY-Ma/CNN-on-Minist/blob/main/CNN_on_Minist/CAM_result_figure/number%3D3%202021-02-08%2019-47-07.jpg" width="100" height="100" align="bottom" />
+<img src="https://github.com/SY-Ma/CNN-on-Minist/blob/main/CNN_on_Minist/CAM_result_figure/number%3D7%202021-02-08%2019-41-02.jpg" width="100" height="100" align="bottom" />
+<img src="https://github.com/SY-Ma/CNN-on-Minist/blob/main/CAM%20result%20figure/number%3D4%202021-02-08%2019-37-17.jpg" width="100" height="100" align="bottom" />
 
 ## CNN学习心得
 - pytorch中，CNN模型使用四维向量作为输入矩阵，维度为：`[BatchSize, Channels, Height, Width]`
