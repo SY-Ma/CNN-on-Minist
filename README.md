@@ -1,5 +1,5 @@
 # CNN-on-Minist
-基于Pytorch框架，使用CNN模型应用于Minist数据集上的分类任务
+基于Pytorch框架，使用CNN模型应用于Minist数据集上的分类任务，**开箱即用**
 
 ## 测试结果
 网络|准确率|错误率|
@@ -46,7 +46,7 @@ ResNet|99.62|0.38|
 结合FCN和Residual Net的优点，使用BatchNorm与GAP分别代替Max Pooling和全连接，然后使用残差模块保证反向传播的有效传递。<br>
 ![Image text](https://github.com/SY-Ma/CNN-on-Minist/blob/main/CNN%20Structure%20Chart/Resnet.png)
 
-## 数据集介绍
+## 数据集简介
 Minist数据集是一个非常经典的数据集，它是由60000个训练样本和10000个测试样本组成，每个样本都是一张28 * 28像素的灰度手写数字图片。常常用于CNN的基础入门数据集，因此第一次接触CNN模型，本文使用此数据集进行学习实验。<br>
 下载地址：http://yann.lecun.com/exdb/mnist/ <br>
 共包含四个文件，分别为训练集数据、训练集标签、测试集数据、测试集标签，解压缩后为.idx3-ubyte类型文件。
@@ -65,6 +65,11 @@ packages|torch time tqdm os idx2numpy numpy matplotlib cv2 datetime|
 具体代码：`idx2numpy.convert_from_file(path)` <br>
 idx2numpy模块的下载：环境命令窗口中输入`pip install idx2numpy` <br>
 详细请看data_process.py中的数据处理过程。
+
+## 参考
+
+
+
 
 
 
