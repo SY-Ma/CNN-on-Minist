@@ -37,7 +37,7 @@ ResNet|99.62|0.38|
 
 ### FCN
 全卷积网络模型，首先舍弃基础CNN中使用最大池化层减少训练参数的方法，使用**BatchNorm**在所有样本上进行归一化操作，加快训练、提高精确度。其次在卷积层后使用**全局平均池化层**(GAP, Global Average Pooling)代替全连接层，由于GAP层没有需要训练的参数，使得模型中需要训练的参数量减少，有效防止过拟合的发生。最后使用线性层对GAP之后的结果映射到分类类别的维度。但是模型的训练会花费更多时间。<br>
-![Image text](https://github.com/SY-Ma/CNN-on-Minist/blob/main/CNN%20Structure%20Chart/FCN.png)
+![Image text]()
 
 ---
 
