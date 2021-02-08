@@ -88,11 +88,17 @@ run_with_saved_model.py|使用训练好的模型（保存为pkl文件）测试�
 
 ## 参考
 - `@inproceedings{2017Time,
-  title={Time series classification from scratch with deep neural networks: A strong baseline},
-  author={ Wang, Zhiguang  and  Yan, Weizhong  and  Oates, Tim },
-  booktitle={2017 International Joint Conference on Neural Networks (IJCNN)},
-  year={2017},
+  title={Time series classification from scratch with deep neural networks: A strong baseline},<br>
+  author={ Wang, Zhiguang  and  Yan, Weizhong  and  Oates, Tim },<br>
+  booktitle={2017 International Joint Conference on Neural Networks (IJCNN)},<br>
+  year={2017},<br>
   }`
+- pytorch中的归一化方法：https://mp.weixin.qq.com/s/jlAHWNTjZkaS5ps2rSvsrQ
+- 全局平均池化：https://blog.csdn.net/kinggang2017/article/details/88869673
+- CAM：https://www.cnblogs.com/luofeel/p/10400954.html <br>
+https://blog.csdn.net/u012426298/article/details/82689969 <br>
+https://blog.csdn.net/u014264373/article/details/85415921
+
 
 ## 本人学识浅薄，代码和文字若有不当之处欢迎批评与指正！
 ## 联系方式：masiyuan007@qq.com
