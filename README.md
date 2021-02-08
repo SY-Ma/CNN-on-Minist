@@ -7,7 +7,7 @@
 Basic CNN|99.19|0.81|
 Inception CNN|99.47|0.53|
 Residual CNN|99.47|0.53|
-FCN|99.15|0.85|
+FCN|99.16|0.84|
 ResNet|99.62|0.38|
 
 其他state-of-the-art的模型结果可以从以下网址查看。<br>
@@ -68,9 +68,11 @@ idx2numpy模块的下载：环境命令窗口中输入`pip install idx2numpy` <b
 
 ## 参考
 
+## 学习心得
 
 
 
 
-
+## 本人学识浅薄，代码和文字若有不当之处欢迎批评与指正！
+## 联系方式：masiyuan007@qq.com
 
