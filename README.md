@@ -66,12 +66,33 @@ packages|torch time tqdm os idx2numpy numpy matplotlib cv2 datetime|
 idx2numpy模块的下载：环境命令窗口中输入`pip install idx2numpy` <br>
 详细请看data_process.py中的数据处理过程。
 
+## 文件描述
+文件名称|描述|
+-------|----|
+data_process|数据集处理|
+font|存储字体，用于结果图中的文字|
+CAM_result_figure|CAM结果图|
+module|模型的各个模块|
+mytest|各种测试代码|
+reslut_figure|准确率结果图|
+saved_model|保存的pkl文件|
+utils|工具类文件夹|
+run.py|训练模型|
+run_with_saved_model.py|使用训练好的模型（保存为pkl文件）测试结果|
+
+## CAM结果分析
+
+
+## CNN学习心得
+
+
 ## 参考
-
-## 学习心得
-
-
-
+- `@inproceedings{2017Time,
+  title={Time series classification from scratch with deep neural networks: A strong baseline},
+  author={ Wang, Zhiguang  and  Yan, Weizhong  and  Oates, Tim },
+  booktitle={2017 International Joint Conference on Neural Networks (IJCNN)},
+  year={2017},
+  }`
 
 ## 本人学识浅薄，代码和文字若有不当之处欢迎批评与指正！
 ## 联系方式：masiyuan007@qq.com
