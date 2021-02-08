@@ -16,7 +16,7 @@ ResNet|99.62|0.38|
 
 ## 各模型简介
 ### Basic CNN
-使用基础的卷积模型架构，使用卷积层、最大池化层、ReLu激活层等对模型进行训练。<br>
+使用基础的卷积模型架构，使用卷积层、**最大池化层**、ReLu激活层等对模型进行训练。<br>
 ![Image text](https://github.com/SY-Ma/CNN-on-Minist/blob/main/CNN%20Structure%20Chart/Basic%20CNN.png)
 
 ---
@@ -27,13 +27,11 @@ ResNet|99.62|0.38|
 
 ---
 
-
 ### Residual CNN
-随着网络模型的不断加深，在进行反向传播时，由于loss经过层层的求导几乎接近于0，导致靠近模型入口处的权重更新效果不明显，甚至发生梯度消失的情况导致他们没有得到训练。因此构建残差网络模型，即使在模型很深的情况下仍然能够对权重进行很好的训练。残差模块中，输入数据的尺寸不会发生变化(C,H,W都不会变化)。<br>
+随着网络模型的不断加深，在进行反向传播时，由于loss经过层层的求导几乎接近于0，导致靠近模型入口处的权重更新效果不明显，甚至发生**梯度消失**的情况导致他们没有得到训练。因此构建残差网络模型，即使在模型很深的情况下仍然能够对权重进行很好的训练。残差模块中，输入数据的尺寸**不会发生变化**(C,H,W都不会变化)。<br>
 ![Image text](https://github.com/SY-Ma/CNN-on-Minist/blob/main/CNN%20Structure%20Chart/Residual%20CNN.png)
 
 ---
-
 
 ### FCN
 全卷积网络模型，首先舍弃基础CNN中使用最大池化层减少训练参数的方法，使用**BatchNorm**在所有样本上进行归一化操作，加快训练、提高精确度。其次在卷积层后使用**全局平均池化层**(GAP, Global Average Pooling)代替全连接层，由于GAP层没有需要训练的参数，使得模型中需要训练的参数量减少，有效防止过拟合的发生。最后使用线性层对GAP之后的结果映射到分类类别的维度。但是模型的训练会花费更多时间。<br>
@@ -41,9 +39,8 @@ ResNet|99.62|0.38|
 
 ---
 
-
 ### ResNet
-结合FCN和Residual Net的优点，使用BatchNorm与GAP分别代替Max Pooling和全连接，然后使用残差模块保证反向传播的有效传递。<br>
+**结合FCN和Residual Net的优点**，使用BatchNorm与GAP分别代替Max Pooling和全连接，然后使用残差模块保证反向传播的有效传递。<br>
 ![Image text](https://github.com/SY-Ma/CNN-on-Minist/blob/main/CNN%20Structure%20Chart/Resnet.png)
 
 ## 数据集简介
@@ -80,14 +77,19 @@ utils|工具类文件夹|
 run.py|训练模型|
 run_with_saved_model.py|使用训练好的模型（保存为pkl文件）测试结果|
 
-## CAM结果分析
+## utils工具描述
+- random_seed:设置随机种子，使每一次的实验结果可复现。
+- visualization：结果图的绘制，包括loss的变化趋势，测试集与训练集准确率变化趋势等。
+- CAM：绘制CAM热力图，旨在观察模型更加关注于图片的什么位置来进行类别的归类。
+
+## CAM(Class Activation Mapping)结果分析
 CAM旨在观察CNN模型在进行分类时更加关注图片的哪部分特征。得到的结果并非一开始认为的，会更加关注图片的表述数字的部分。如下图中的黄颜色的部分。<br>
 <img src="https://github.com/SY-Ma/CNN-on-Minist/blob/main/CAM%20result%20figure/x2%201.jpg" width="100" height="100" align="bottom" /> 
 <img src="https://github.com/SY-Ma/CNN-on-Minist/blob/main/CNN_on_Minist/CAM_result_figure/1.png" width="100" height="100" align="bottom" /> 
 <img src="https://github.com/SY-Ma/CNN-on-Minist/blob/main/CNN_on_Minist/CAM_result_figure/3.png" width="100" height="100" align="bottom" /> 
 <img src="https://github.com/SY-Ma/CNN-on-Minist/blob/main/CNN_on_Minist/CAM_result_figure/7.png" width="100" height="100" align="bottom" /> 
 <img src="https://github.com/SY-Ma/CNN-on-Minist/blob/main/CAM%20result%20figure/4.png" width="100" height="100" align="bottom" /> <br>
-然而，模型似乎更加关注图片中数字的轮廓，即颜色快速变化的陡坡，相当于灰度值迅速变化的边界。使用FCN模型在数据集上的CAM绘制结果如下图所示,其对应数字分别为1，1，3，7，4。<br>
+然而，模型似乎更加关注图片中数字的轮廓，即颜色快速变化的陡坡，相当于灰度值迅速变化的边界。使用FCN模型在数据集上的CAM绘制结果如下图所示,其对应数字分别为1，1，3，7，4。对于CAM图像与结果分析，期望更多实验与数据的探索。<br>
 <img src="https://github.com/SY-Ma/CNN-on-Minist/blob/main/CAM%20result%20figure/number%3D1%202021-02-04%2020-30-21.jpg" width="100" height="100" align="bottom" />
 <img src="https://github.com/SY-Ma/CNN-on-Minist/blob/main/CNN_on_Minist/CAM_result_figure/number%3D1%202021-02-08%2019-45-11.jpg" width="100" height="100" align="bottom" />
 <img src="https://github.com/SY-Ma/CNN-on-Minist/blob/main/CNN_on_Minist/CAM_result_figure/number%3D3%202021-02-08%2019-47-07.jpg" width="100" height="100" align="bottom" />
