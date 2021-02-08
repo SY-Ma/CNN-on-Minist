@@ -87,12 +87,13 @@ run_with_saved_model.py|使用训练好的模型（保存为pkl文件）测试�
 
 
 ## 参考
-- ```
+- 论文：
+  ```
   @inproceedings{2017Time,
   title={Time series classification from scratch with deep neural networks: A strong baseline},
-  author={ Wang, Zhiguang  and  Yan, Weizhong  and  Oates, Tim },<br>
-  booktitle={2017 International Joint Conference on Neural Networks (IJCNN)},<br>
-  year={2017},<br>
+  author={ Wang, Zhiguang  and  Yan, Weizhong  and  Oates, Tim },
+  booktitle={2017 International Joint Conference on Neural Networks (IJCNN)},
+  year={2017},
   }
   ```
 - pytorch中的归一化方法：https://mp.weixin.qq.com/s/jlAHWNTjZkaS5ps2rSvsrQ
