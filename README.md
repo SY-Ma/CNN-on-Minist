@@ -84,7 +84,19 @@ run_with_saved_model.py|使用训练好的模型（保存为pkl文件）测试�
 
 
 ## CNN学习心得
-
+- pytorch中，CNN模型使用四维向量作为输入矩阵，维度为：`[BatchSize, Channels, Height, Width]`
+- BatchNorm2d是对Batch，H，W三者上的归一化，因此传入参数应该为输入的四维向量的channel数。LayerNorm是对C，H，W三者上的归一化，输入维度为三者之积。
+- 随着卷积层数的叠加，模型的准确率也趋于增高。
+- Max Pooling效果好于Average Pooling。
+- BatchNorm有利于加快学习的速度，增加准确率，使用BatchNorm代替MaxPooling，不会改变图形的尺寸。可以对比ResNet和Residual Net。
+- 经验总结，使用BatchNorm代替MaxPooling不改变图形尺寸，使得卷积核得到更多次的训练，有助于提升模型的准确率。
+- 建议不断增加channel的深度，不改变图片尺寸。虽然这样会花费更多的时间进行训练。
+- 残差链接在模型较深的情况下效果显著，对比ResNet和FCN。
+- ResNet使用尺寸为1的卷积核，在各个Residual Block之间改变维度。使得模型自始自终未改变图形的尺寸。
+- 卷积层的输出为四维向量，若想要映射到输出类别，需要进行降维操作，在这里有两种方案：一是进行reshape操作；二是使用全剧平均池化操作(GAP)，在每个channel上求其平均值，再使用squeeze降维。两者均可以达到降维的目的，不过，GAP相比于全连接层数度运算速度更快，没有参数需要训练，但是模型的收敛速度会变慢，可能是因为训练的压力都堆积在卷积层。
+- 若使用GAP进行降维操作，若想将维度映射到分类类别有两种方法：一是在GAP之前最近的卷积层，使其输出的channel即为分类类别数，经过GAP与squeeze之后即为得到的最终输出；二是不要求GAP层的channel数，在GAP之后，squeeze之前再接一层kernel size为1的卷积层进行channel的改变；三是不要求GAP层的channel数，而是在squeeze操作之后再接一个全连接进行映射映射。实验表明，方法三的效果更好。
+- reshape之后，全连接之前，使用LayerNorm能够大大提升模型的准确率。
+- CAM旨在观察训练得到的模型关注了原图片中的什么部分。只有使用了GAP且在之后进行全连接操作才可以进行CAM的分析。在最后一层卷积层中，维度为`[B, C, H, W]`,经过GAP之后为`[B, C, 1, 1]`,经过squeeze与线性层之后为`[B, number of classes]`,因此全连接层中的权重矩阵为`[number of classes, C]`,那么对于任意一个下标的向量维度即为`[C,]`，相当于最后一层卷积输出向量的每一个channel上的权重。而且，特定下标的`[C,]`向量是驱使卷积输出得到的预测为对应下标的权重向量。具体请参考参考中的相关内容。
 
 ## 参考
 - 论文：
@@ -99,8 +111,9 @@ run_with_saved_model.py|使用训练好的模型（保存为pkl文件）测试�
 - pytorch中的归一化方法：https://mp.weixin.qq.com/s/jlAHWNTjZkaS5ps2rSvsrQ
 - 全局平均池化：https://blog.csdn.net/kinggang2017/article/details/88869673
 - CAM：https://www.cnblogs.com/luofeel/p/10400954.html <br>
-https://blog.csdn.net/u012426298/article/details/82689969 <br>
-https://blog.csdn.net/u014264373/article/details/85415921
+  https://blog.csdn.net/u012426298/article/details/82689969 
+  https://blog.csdn.net/u014264373/article/details/85415921 
+- 基础知识视频：https://www.bilibili.com/video/BV1Y7411d7Ys?p=11&t=2956
 
 
 ## 本人学识浅薄，代码和文字若有不当之处欢迎批评与指正！
