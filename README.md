@@ -2,13 +2,17 @@
 基于Pytorch框架，使用CNN模型应用于Minist数据集上的分类任务
 
 ## 测试结果
-网络|准确率|
-----|-----|
-Basic CNN|99.19|
-Inception CNN|99.47|
-Residual CNN|99.47|
-FCN|99.15|
-ResNet|99.62|
+网络|准确率|错误率|
+----|-----|------|
+Basic CNN|99.19|0.81|
+Inception CNN|99.47|0.53|
+Residual CNN|99.47|0.53|
+FCN|99.15|0.85|
+ResNet|99.62|0.38|
+
+其他state-of-the-art的模型结果可以从以下网址查看。<br>
+地址：http://yann.lecun.com/exdb/mnist/ <br>
+本实验未对数据集进行任何的预处理操作，相比之下可以看出，在与Convolutional nets中的结果相比，本文的ResNet的错误率非常之低，相比于大部分未进行预处理的模型甚至进行了预处理的模型结果更好。
 
 ## 各模型简介
 ### Basic CNN
